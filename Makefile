@@ -1,13 +1,13 @@
 
 PROGRAM=heart_monitor
-INCLUDE=/storage/git/naken_asm/include/msp430
+INCLUDE=/storage/git/naken_asm/include
 ASM=naken_asm
 CFLAGS=-Wall $(INCLUDES) -g
 LDFLAGS=`fltk-config --libs --ldflags`
 OBJCFLAGS=`gnustep-config --objc-flags` -lgnustep-base
 
-default:
-	$(ASM) -l -d -o $(PROGRAM).hex -I$(INCLUDE) $(PROGRAM).asm
+default: sdl
+	$(ASM) -l -o $(PROGRAM).hex -I$(INCLUDE) $(PROGRAM).asm
 
 sdl:
 	gcc -c -x objective-c HeartMonitorWindow.m -g -Wall -O3 $(OBJCFLAGS)
